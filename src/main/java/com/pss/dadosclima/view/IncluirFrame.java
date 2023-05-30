@@ -4,6 +4,8 @@
  */
 package com.pss.dadosclima.view;
 
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
 import javax.swing.JButton;
 import javax.swing.JFormattedTextField;
 
@@ -55,7 +57,8 @@ public class IncluirFrame extends javax.swing.JInternalFrame {
         TemperaturaLabel = new javax.swing.JLabel();
         UmidadeLabel = new javax.swing.JLabel();
         PressaoLabel = new javax.swing.JLabel();
-        DataField = new javax.swing.JFormattedTextField();
+        DateFormat format = new SimpleDateFormat("dd/MM/yyyy");
+        DataField = new javax.swing.JFormattedTextField(format);
         TemperaturaField = new javax.swing.JFormattedTextField();
         UmidadeField = new javax.swing.JFormattedTextField();
         PressaoField = new javax.swing.JFormattedTextField();
@@ -79,8 +82,12 @@ public class IncluirFrame extends javax.swing.JInternalFrame {
         PressaoLabel.setLabelFor(PressaoField);
         PressaoLabel.setText("Pressão:");
 
-        DataField.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.DateFormatter(java.text.DateFormat.getDateInstance(java.text.DateFormat.SHORT))));
-        DataField.setText("DD/MM/AA");
+        DataField.setToolTipText("dd/mm/yyyy");
+        DataField.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                DataFieldFocusGained(evt);
+            }
+        });
         DataField.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 DataFieldActionPerformed(evt);
@@ -165,6 +172,10 @@ public class IncluirFrame extends javax.swing.JInternalFrame {
     private void UmidadeFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_UmidadeFieldActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_UmidadeFieldActionPerformed
+
+    private void DataFieldFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_DataFieldFocusGained
+        // TODO add your handling code here:
+    }//GEN-LAST:event_DataFieldFocusGained
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

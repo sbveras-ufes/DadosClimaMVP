@@ -4,14 +4,12 @@
  */
 package com.pss.dadosclima.presenter;
 
-import com.pss.dadosclima.model.DadoClima;
-import com.pss.dadosclima.presenter.PrincipalPresenter;
 import com.pss.dadosclima.view.IncluirFrame;
-import com.pss.dadosclima.view.PrincipalView;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.util.ArrayList;
-import javax.swing.JFrame;
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
+import java.time.format.DateTimeParseException;
 import javax.swing.JInternalFrame;
 
 /**
@@ -34,7 +32,12 @@ public class IncluirPresenter {
                 System.out.println(Float.parseFloat(view.getTemperaturaField().getText()));
                 System.out.println(Float.parseFloat(view.getUmidadeField().getText()));
                 System.out.println(Float.parseFloat(view.getPressaoField().getText()));
-                presenter.addMedicao(Float.parseFloat(view.getTemperaturaField().getText()), Float.parseFloat(view.getPressaoField().getText()), Float.parseFloat(view.getUmidadeField().getText()));
+                try{
+                    presenter.addMedicao(Float.parseFloat(view.getTemperaturaField().getText()), Float.parseFloat(view.getPressaoField().getText()), Float.parseFloat(view.getUmidadeField().getText()),LocalDate.parse(view.getDataField().getText(), DateTimeFormatter.ofPattern("dd/MM/yyyy")));
+                }
+                catch(DateTimeParseException dx){
+                    presenter.addMedicao(Float.parseFloat(view.getTemperaturaField().getText()), Float.parseFloat(view.getPressaoField().getText()), Float.parseFloat(view.getUmidadeField().getText()),LocalDate.now());    
+                }
             }
         });
     }

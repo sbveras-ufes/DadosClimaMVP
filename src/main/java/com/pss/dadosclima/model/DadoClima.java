@@ -16,11 +16,12 @@ public class DadoClima {
     private float umidade;
     private LocalDate data;
 
-    public DadoClima(float Temperatura, float Pressao, float umidade) {
+    public DadoClima(float Temperatura, float Pressao, float umidade, LocalDate data) {
         this.Temperatura = Temperatura;
         this.Pressao = Pressao;
         this.umidade = umidade;
-        this.data=LocalDate.now();
+        this.data=data;
+     
     }
 
     public float getTemperatura() {

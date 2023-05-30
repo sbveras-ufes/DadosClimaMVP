@@ -7,11 +7,12 @@ package com.pss.dadosclima.presenter;
 import com.pss.dadosclima.Operacao;
 import com.pss.dadosclima.model.DadoClima;
 import com.pss.dadosclima.presenter.Paineis.GraficoPresenter;
-import com.pss.dadosclima.presenter.Paineis.UltimoPresenter;
 import com.pss.dadosclima.presenter.Paineis.MediaPresenter;
-import com.pss.dadosclima.presenter.Paineis.RegistrosPresenter;
 import com.pss.dadosclima.presenter.Paineis.Painel;
+import com.pss.dadosclima.presenter.Paineis.RegistrosPresenter;
+import com.pss.dadosclima.presenter.Paineis.UltimoPresenter;
 import com.pss.dadosclima.view.PrincipalView;
+import java.time.LocalDate;
 import java.util.ArrayList;
 import javax.swing.JOptionPane;
 
@@ -45,8 +46,8 @@ public class PrincipalPresenter {
         
     }
     
-    public void addMedicao(float temperatura,  float pressao, float umidade){
-        notificarPaineis(new DadoClima(temperatura,pressao,umidade), Operacao.INCLUIR);
+    public void addMedicao(float temperatura,  float pressao, float umidade, LocalDate data){
+        notificarPaineis(new DadoClima(temperatura,pressao,umidade,data), Operacao.INCLUIR);
     }
     public void remMedicao(DadoClima dado){
         notificarPaineis(dado, Operacao.EXCLUIR);
