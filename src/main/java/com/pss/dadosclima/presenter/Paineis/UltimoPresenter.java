@@ -4,9 +4,9 @@
  */
 package com.pss.dadosclima.presenter.Paineis;
 
-import com.pss.dadosclima.Operacao;
-import static com.pss.dadosclima.Operacao.EXCLUIR;
-import static com.pss.dadosclima.Operacao.INCLUIR;
+import com.pss.dadosclima.enums.Operacao;
+import static com.pss.dadosclima.enums.Operacao.EXCLUIR;
+import static com.pss.dadosclima.enums.Operacao.INCLUIR;
 import com.pss.dadosclima.model.DadoClima;
 import com.pss.dadosclima.view.UltimaFrame;
 import java.util.ArrayList;

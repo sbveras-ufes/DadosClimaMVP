@@ -29,9 +29,7 @@ public class IncluirPresenter {
         view.getIncluirButton().addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                System.out.println(Float.parseFloat(view.getTemperaturaField().getText()));
-                System.out.println(Float.parseFloat(view.getUmidadeField().getText()));
-                System.out.println(Float.parseFloat(view.getPressaoField().getText()));
+           
                 try{
                     presenter.addMedicao(Float.parseFloat(view.getTemperaturaField().getText()), Float.parseFloat(view.getPressaoField().getText()), Float.parseFloat(view.getUmidadeField().getText()),LocalDate.parse(view.getDataField().getText(), DateTimeFormatter.ofPattern("dd/MM/yyyy")));
                 }

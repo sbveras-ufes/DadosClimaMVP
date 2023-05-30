@@ -4,7 +4,7 @@
  */
 package com.pss.dadosclima.presenter.Paineis;
 
-import com.pss.dadosclima.Operacao;
+import com.pss.dadosclima.enums.Operacao;
 import com.pss.dadosclima.model.DadoClima;
 import com.pss.dadosclima.view.GraficoFrame;
 import java.awt.BorderLayout;
