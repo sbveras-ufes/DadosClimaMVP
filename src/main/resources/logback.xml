@@ -39,13 +39,13 @@
         <appender-ref ref="JSON_APPENDER" />
     </logger>
 
-    <logger name="com.pss.dadosclima.service.LogXml" level="info" additivity="false">
+    <logger name="com.pss.dadosclima.service.LogXML" level="info" additivity="false">
         <appender-ref ref="XML_APPENDER" />
     </logger>
 
     <root level="info">
         <appender-ref ref="JSON_APPENDER" />
-        <appender-ref ref="XML_APPENDER" />
+        
     </root>
 
 </configuration>
