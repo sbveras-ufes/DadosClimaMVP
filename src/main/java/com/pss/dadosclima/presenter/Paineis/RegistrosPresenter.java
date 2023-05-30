@@ -52,7 +52,7 @@ public class RegistrosPresenter implements Painel{
                 break;
         }
         AlimentaTabela();
-        System.out.println(dados.size());
+        
     }
     
     public void AlimentaTabela(){

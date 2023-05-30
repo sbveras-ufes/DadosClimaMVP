@@ -21,6 +21,7 @@ public class PrincipalView extends javax.swing.JFrame {
         initComponents();
         setExtendedState(java.awt.Frame.MAXIMIZED_BOTH);
         setVisible(true);
+        
     }
 
     public JMenuItem getConfigurarItem() {

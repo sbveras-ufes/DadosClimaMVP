@@ -4,6 +4,7 @@
  */
 package com.pss.dadosclima.presenter;
 
+import com.pss.dadosclima.enums.FormatosLog;
 import com.pss.dadosclima.enums.Operacao;
 import com.pss.dadosclima.model.DadoClima;
 import com.pss.dadosclima.presenter.Paineis.GraficoPresenter;
@@ -11,6 +12,7 @@ import com.pss.dadosclima.presenter.Paineis.MediaPresenter;
 import com.pss.dadosclima.presenter.Paineis.Painel;
 import com.pss.dadosclima.presenter.Paineis.RegistrosPresenter;
 import com.pss.dadosclima.presenter.Paineis.UltimoPresenter;
+import com.pss.dadosclima.service.LogService;
 import com.pss.dadosclima.view.PrincipalView;
 import java.time.LocalDate;
 import java.util.ArrayList;
@@ -20,9 +22,11 @@ import javax.swing.JOptionPane;
  *
  * @author UFES
  */
-public class PrincipalPresenter {
+public final class PrincipalPresenter {
     private PrincipalView view;
     private ArrayList<Painel> paineis= new ArrayList<>();
+    private LogService log =new LogService();
+
     private int numregistros=0;
 
     public PrincipalPresenter() {
@@ -35,7 +39,17 @@ public class PrincipalPresenter {
         paineis.forEach((n)-> view.getDesktopPane().add(n.getFrame()) );
         
         view.getConfigurarItem().addActionListener((e) -> {
-            JOptionPane.showInternalMessageDialog(view.getDesktopPane(), "Não implementado", "Configurar", 1);
+        
+        FormatosLog selecionado = (FormatosLog) JOptionPane.showInternalInputDialog(view.getDesktopPane(),"Log:", "Configuração",JOptionPane.QUESTION_MESSAGE, null,FormatosLog.values(), FormatosLog.values()[0]);
+        
+        if (selecionado != null) {
+            this.log=new LogService(selecionado);
+            JOptionPane.showInternalMessageDialog(view.getDesktopPane(),"A saída do log será em " + selecionado,"Aviso",1);
+            
+         }
+        
+        
+            
         });
         
     view.repaint();
@@ -48,6 +62,7 @@ public class PrincipalPresenter {
     
     public void addMedicao(float temperatura,  float pressao, float umidade, LocalDate data){
         notificarPaineis(new DadoClima(temperatura,pressao,umidade,data), Operacao.INCLUIR);
+        
     }
     public void remMedicao(DadoClima dado){
         notificarPaineis(dado, Operacao.EXCLUIR);
@@ -55,6 +70,8 @@ public class PrincipalPresenter {
     
     private void notificarPaineis(DadoClima dado, Operacao op){
         paineis.forEach((n) -> n.atualizar(dado, op));
+        log.handle(dado, op);
+        
         switch(op){
             case INCLUIR:
                 numregistros++;
@@ -66,5 +83,6 @@ public class PrincipalPresenter {
         view.getQuantidadeLabel().setText(String.valueOf(numregistros));
     }
     
+   
     
 }

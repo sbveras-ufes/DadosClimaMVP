@@ -1,0 +1,51 @@
+<configuration>
+
+    <appender name="JSON_APPENDER" class="ch.qos.logback.core.FileAppender">
+        <file>logs/events.json</file>
+        <encoder class="net.logstash.logback.encoder.LoggingEventCompositeJsonEncoder">
+            <providers>
+                <pattern>
+                    <pattern>
+                        {
+                            "timestamp": "%d{yyyy-MM-dd'T'HH:mm:ss.SSSZ}",
+                            "level": "%level",
+                            "logger": "%logger",
+                            "message": "%msg"
+                        }
+                    </pattern>
+                </pattern>
+            </providers>
+        </encoder>
+    </appender>
+
+    <appender name="XML_APPENDER" class="ch.qos.logback.core.rolling.RollingFileAppender">
+        <file>logs/events.xml</file>
+        <encoder class="ch.qos.logback.classic.encoder.PatternLayoutEncoder">
+            <pattern>
+                &lt;log&gt;%n
+                &lt;timestamp&gt;%d{yyyy-MM-dd'T'HH:mm:ss.SSSZ}&lt;/timestamp&gt;%n
+                &lt;level&gt;%level&lt;/level&gt;%n
+                &lt;logger&gt;%logger&lt;/logger&gt;%n
+                &lt;message&gt;%msg&lt;/message&gt;%n
+                &lt;/log&gt;%n
+            </pattern>
+        </encoder>
+        <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+            <fileNamePattern>logs/events-%d{yyyy-MM-dd}.xml</fileNamePattern>
+        </rollingPolicy>
+    </appender>
+
+    <logger name="com.pss.dadosclima.service.LogJson" level="info" additivity="false">
+        <appender-ref ref="JSON_APPENDER" />
+    </logger>
+
+    <logger name="com.pss.dadosclima.service.LogXml" level="info" additivity="false">
+        <appender-ref ref="XML_APPENDER" />
+    </logger>
+
+    <root level="info">
+        <appender-ref ref="JSON_APPENDER" />
+        <appender-ref ref="XML_APPENDER" />
+    </root>
+
+</configuration>
