@@ -52,6 +52,7 @@ public class UltimoPresenter implements Painel{
         
         view.repaint();
     }
+    @Override
      public JInternalFrame getFrame(){
         return view;
     }

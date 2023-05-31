@@ -16,6 +16,7 @@ import com.pss.dadosclima.service.LogService;
 import com.pss.dadosclima.view.PrincipalView;
 import java.time.LocalDate;
 import java.util.ArrayList;
+
 import javax.swing.JOptionPane;
 
 /**
@@ -24,19 +25,20 @@ import javax.swing.JOptionPane;
  */
 public final class PrincipalPresenter {
     private PrincipalView view;
-    private ArrayList<Painel> paineis= new ArrayList<>();
+    private final ArrayList<Painel> paineis= new ArrayList<>();
     private LogService log =new LogService();
 
     private int numregistros=0;
 
     public PrincipalPresenter() {
     view=new PrincipalView();
-        view.getDesktopPane().add(new IncluirPresenter(this).getFrame());
+        view.getDesktopPane().add(new IncluirPresenter(this).getFrame()).setLocation(20, 520);
         RegistarPainel(new MediaPresenter());
         RegistarPainel(new UltimoPresenter());
         RegistarPainel(new RegistrosPresenter(this));
         RegistarPainel(new GraficoPresenter());
-        paineis.forEach((n)-> view.getDesktopPane().add(n.getFrame()) );
+       paineis.forEach((n)-> view.getDesktopPane().add(n.getFrame()) );
+
         
         view.getConfigurarItem().addActionListener((e) -> {
         

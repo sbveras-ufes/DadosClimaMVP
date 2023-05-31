@@ -144,14 +144,14 @@
     <Component class="javax.swing.JFormattedTextField" name="TemperaturaField">
       <Properties>
         <Property name="formatterFactory" type="javax.swing.JFormattedTextField$AbstractFormatterFactory" editor="org.netbeans.modules.form.editors.AbstractFormatterFactoryEditor">
-          <Format format="#0" subtype="-1" type="0"/>
+          <Format format="#0.00" subtype="-1" type="0"/>
         </Property>
       </Properties>
     </Component>
     <Component class="javax.swing.JFormattedTextField" name="UmidadeField">
       <Properties>
         <Property name="formatterFactory" type="javax.swing.JFormattedTextField$AbstractFormatterFactory" editor="org.netbeans.modules.form.editors.AbstractFormatterFactoryEditor">
-          <Format format="#0" subtype="-1" type="0"/>
+          <Format format="#0.00" subtype="-1" type="0"/>
         </Property>
       </Properties>
       <Events>
@@ -161,7 +161,7 @@
     <Component class="javax.swing.JFormattedTextField" name="PressaoField">
       <Properties>
         <Property name="formatterFactory" type="javax.swing.JFormattedTextField$AbstractFormatterFactory" editor="org.netbeans.modules.form.editors.AbstractFormatterFactoryEditor">
-          <Format format="#0" subtype="-1" type="0"/>
+          <Format format="#0.00" subtype="-1" type="0"/>
         </Property>
       </Properties>
     </Component>

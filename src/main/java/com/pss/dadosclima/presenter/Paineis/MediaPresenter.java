@@ -26,6 +26,7 @@ public class MediaPresenter implements Painel{
         
         view.setVisible(true);
     }
+    @Override
     public void atualizar(DadoClima dado, Operacao op){
         switch(op){
             case INCLUIR:
@@ -55,6 +56,7 @@ public class MediaPresenter implements Painel{
         return medias;
 }
     
+    @Override
      public JInternalFrame getFrame(){
         return view;
     }

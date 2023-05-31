@@ -31,10 +31,10 @@ public class IncluirPresenter {
             public void actionPerformed(ActionEvent e) {
            
                 try{
-                    presenter.addMedicao(Float.parseFloat(view.getTemperaturaField().getText()), Float.parseFloat(view.getPressaoField().getText()), Float.parseFloat(view.getUmidadeField().getText()),LocalDate.parse(view.getDataField().getText(), DateTimeFormatter.ofPattern("dd/MM/yyyy")));
+                    presenter.addMedicao(Float.parseFloat(view.getTemperaturaField().getText().replace(",", ".")), Float.parseFloat(view.getPressaoField().getText().replace(",", ".")), Float.parseFloat(view.getUmidadeField().getText().replace(",", ".")),LocalDate.parse(view.getDataField().getText(), DateTimeFormatter.ofPattern("dd/MM/yyyy")));
                 }
                 catch(DateTimeParseException dx){
-                    presenter.addMedicao(Float.parseFloat(view.getTemperaturaField().getText()), Float.parseFloat(view.getPressaoField().getText()), Float.parseFloat(view.getUmidadeField().getText()),LocalDate.now());    
+                    presenter.addMedicao(Float.parseFloat(view.getTemperaturaField().getText().replace(",", ".")), Float.parseFloat(view.getPressaoField().getText().replace(",", ".")), Float.parseFloat(view.getUmidadeField().getText().replace(",", ".")),LocalDate.now());    
                 }
             }
         });

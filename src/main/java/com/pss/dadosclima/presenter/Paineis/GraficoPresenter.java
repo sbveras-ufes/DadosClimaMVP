@@ -29,6 +29,7 @@ public class GraficoPresenter implements Painel{
         view.setVisible(true);
     }
     
+   @Override
     public void atualizar(DadoClima dado, Operacao op){
         switch(op){
             case INCLUIR:
@@ -100,6 +101,7 @@ public class GraficoPresenter implements Painel{
         
         
     }
+   @Override
     public JInternalFrame getFrame(){
         return view;
     }

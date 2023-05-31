@@ -42,6 +42,7 @@ public class RegistrosPresenter implements Painel{
             }
         });
     }
+    @Override
     public void atualizar(DadoClima dado, Operacao op){
         switch(op){
             case INCLUIR:
@@ -68,6 +69,7 @@ public class RegistrosPresenter implements Painel{
         view.repaint();
     }
     
+    @Override
      public JInternalFrame getFrame(){
         return view;
         
